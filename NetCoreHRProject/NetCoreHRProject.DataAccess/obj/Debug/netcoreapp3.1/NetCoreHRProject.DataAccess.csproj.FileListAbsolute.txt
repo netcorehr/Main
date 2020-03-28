@@ -1,0 +1,8 @@
+C:\Users\Hamzah-PC\source\repos\netcorehr\Main\NetCoreHRProject\NetCoreHRProject.DataAccess\bin\Debug\netcoreapp3.1\NetCoreHRProject.DataAccess.deps.json
+C:\Users\Hamzah-PC\source\repos\netcorehr\Main\NetCoreHRProject\NetCoreHRProject.DataAccess\bin\Debug\netcoreapp3.1\NetCoreHRProject.DataAccess.dll
+C:\Users\Hamzah-PC\source\repos\netcorehr\Main\NetCoreHRProject\NetCoreHRProject.DataAccess\bin\Debug\netcoreapp3.1\NetCoreHRProject.DataAccess.pdb
+C:\Users\Hamzah-PC\source\repos\netcorehr\Main\NetCoreHRProject\NetCoreHRProject.DataAccess\obj\Debug\netcoreapp3.1\NetCoreHRProject.DataAccess.csprojAssemblyReference.cache
+C:\Users\Hamzah-PC\source\repos\netcorehr\Main\NetCoreHRProject\NetCoreHRProject.DataAccess\obj\Debug\netcoreapp3.1\NetCoreHRProject.DataAccess.AssemblyInfoInputs.cache
+C:\Users\Hamzah-PC\source\repos\netcorehr\Main\NetCoreHRProject\NetCoreHRProject.DataAccess\obj\Debug\netcoreapp3.1\NetCoreHRProject.DataAccess.AssemblyInfo.cs
+C:\Users\Hamzah-PC\source\repos\netcorehr\Main\NetCoreHRProject\NetCoreHRProject.DataAccess\obj\Debug\netcoreapp3.1\NetCoreHRProject.DataAccess.dll
+C:\Users\Hamzah-PC\source\repos\netcorehr\Main\NetCoreHRProject\NetCoreHRProject.DataAccess\obj\Debug\netcoreapp3.1\NetCoreHRProject.DataAccess.pdb

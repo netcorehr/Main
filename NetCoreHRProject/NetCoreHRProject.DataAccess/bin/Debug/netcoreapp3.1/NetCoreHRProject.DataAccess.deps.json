@@ -1,0 +1,23 @@
+{
+  "runtimeTarget": {
+    "name": ".NETCoreApp,Version=v3.1",
+    "signature": ""
+  },
+  "compilationOptions": {},
+  "targets": {
+    ".NETCoreApp,Version=v3.1": {
+      "NetCoreHRProject.DataAccess/1.0.0": {
+        "runtime": {
+          "NetCoreHRProject.DataAccess.dll": {}
+        }
+      }
+    }
+  },
+  "libraries": {
+    "NetCoreHRProject.DataAccess/1.0.0": {
+      "type": "project",
+      "serviceable": false,
+      "sha512": ""
+    }
+  }
+}

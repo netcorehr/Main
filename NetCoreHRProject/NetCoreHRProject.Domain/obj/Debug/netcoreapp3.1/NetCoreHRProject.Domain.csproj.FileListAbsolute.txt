@@ -1,0 +1,8 @@
+C:\Users\Hamzah-PC\source\repos\netcorehr\Main\NetCoreHRProject\NetCoreHRProject.Domain\bin\Debug\netcoreapp3.1\NetCoreHRProject.Domain.deps.json
+C:\Users\Hamzah-PC\source\repos\netcorehr\Main\NetCoreHRProject\NetCoreHRProject.Domain\bin\Debug\netcoreapp3.1\NetCoreHRProject.Domain.dll
+C:\Users\Hamzah-PC\source\repos\netcorehr\Main\NetCoreHRProject\NetCoreHRProject.Domain\bin\Debug\netcoreapp3.1\NetCoreHRProject.Domain.pdb
+C:\Users\Hamzah-PC\source\repos\netcorehr\Main\NetCoreHRProject\NetCoreHRProject.Domain\obj\Debug\netcoreapp3.1\NetCoreHRProject.Domain.csprojAssemblyReference.cache
+C:\Users\Hamzah-PC\source\repos\netcorehr\Main\NetCoreHRProject\NetCoreHRProject.Domain\obj\Debug\netcoreapp3.1\NetCoreHRProject.Domain.AssemblyInfoInputs.cache
+C:\Users\Hamzah-PC\source\repos\netcorehr\Main\NetCoreHRProject\NetCoreHRProject.Domain\obj\Debug\netcoreapp3.1\NetCoreHRProject.Domain.AssemblyInfo.cs
+C:\Users\Hamzah-PC\source\repos\netcorehr\Main\NetCoreHRProject\NetCoreHRProject.Domain\obj\Debug\netcoreapp3.1\NetCoreHRProject.Domain.dll
+C:\Users\Hamzah-PC\source\repos\netcorehr\Main\NetCoreHRProject\NetCoreHRProject.Domain\obj\Debug\netcoreapp3.1\NetCoreHRProject.Domain.pdb

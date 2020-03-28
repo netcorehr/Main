@@ -1,0 +1,8 @@
+C:\Users\Hamzah-PC\source\repos\netcorehr\Main\NetCoreHRProject\NetCoreHRProject.Entity\obj\Debug\netcoreapp3.1\NetCoreHRProject.Entity.csprojAssemblyReference.cache
+C:\Users\Hamzah-PC\source\repos\netcorehr\Main\NetCoreHRProject\NetCoreHRProject.Entity\obj\Debug\netcoreapp3.1\NetCoreHRProject.Entity.AssemblyInfoInputs.cache
+C:\Users\Hamzah-PC\source\repos\netcorehr\Main\NetCoreHRProject\NetCoreHRProject.Entity\obj\Debug\netcoreapp3.1\NetCoreHRProject.Entity.AssemblyInfo.cs
+C:\Users\Hamzah-PC\source\repos\netcorehr\Main\NetCoreHRProject\NetCoreHRProject.Entity\bin\Debug\netcoreapp3.1\NetCoreHRProject.Entity.deps.json
+C:\Users\Hamzah-PC\source\repos\netcorehr\Main\NetCoreHRProject\NetCoreHRProject.Entity\bin\Debug\netcoreapp3.1\NetCoreHRProject.Entity.dll
+C:\Users\Hamzah-PC\source\repos\netcorehr\Main\NetCoreHRProject\NetCoreHRProject.Entity\bin\Debug\netcoreapp3.1\NetCoreHRProject.Entity.pdb
+C:\Users\Hamzah-PC\source\repos\netcorehr\Main\NetCoreHRProject\NetCoreHRProject.Entity\obj\Debug\netcoreapp3.1\NetCoreHRProject.Entity.dll
+C:\Users\Hamzah-PC\source\repos\netcorehr\Main\NetCoreHRProject\NetCoreHRProject.Entity\obj\Debug\netcoreapp3.1\NetCoreHRProject.Entity.pdb
