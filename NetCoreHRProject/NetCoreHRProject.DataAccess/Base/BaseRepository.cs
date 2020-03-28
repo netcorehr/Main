@@ -8,10 +8,11 @@ using System.Linq.Expressions;
 using System.Threading.Tasks;
 using NetCoreHRProject.Entity.Common.Entities;
 using NetCoreHRProject.Entity.Common.Constants;
+using NetCoreHRProject.Entity.Base;
 
 namespace NetCoreHRProject.DataAccess.Base
 {
-    public class BaseRepository<T> : IBaseRepositoryInterface<T> where T : class, new()
+    public class BaseRepository<T> : IBaseRepositoryInterface<T> where T : BaseEntity, new()
     {
         MainApplicationDBContext dbContext;
         private readonly ILogger<T> logger;
@@ -27,10 +28,14 @@ namespace NetCoreHRProject.DataAccess.Base
 
             try
             {
-                dbContext.Set<T>().Remove(entity);
-                await dbContext.SaveChangesAsync();
-                result.MessageArabic = CommonRepositoryMessages.DeleteSuccessMessage;
-                result.MessageEnglish = CommonRepositoryMessages.DeleteSuccessMessageEn;
+
+                using(var context = dbContext)
+                {
+                    context.Set<T>().Remove(entity);
+                    await dbContext.SaveChangesAsync();
+                    result.MessageArabic = CommonRepositoryMessages.DeleteSuccessMessage;
+                    result.MessageEnglish = CommonRepositoryMessages.DeleteSuccessMessageEn;
+                }              
 
             }
             catch (Exception ex)
@@ -51,15 +56,25 @@ namespace NetCoreHRProject.DataAccess.Base
 
             try
             {
-                var data = await dbContext.Set<T>().ToListAsync();
-                if (data.Count > 0)
-                    result.List = data;
-                else
+                using (var context = dbContext)
                 {
-                    result.Status = 3;
-                    result.MessageEnglish = CommonRepositoryMessages.CannotFindAllMessageEN;
-                    result.MessageArabic = CommonRepositoryMessages.CannotFindAllMessage;
+                    var count = await context.Set<T>().CountAsync();
+                    result.ItemCount = count;
+                    result.TotalPages = (int)Math.Ceiling((double)count / pageSize);
+                    var skip = (pageIndex - 1) * pageSize;
+
+                    var data = await dbContext.Set<T>().Skip(skip).Take(pageSize).OrderBy(a => a.CreatedOn).ToListAsync();
+                   
+                    if (data.Count > 0)
+                        result.List = data;
+                    else
+                    {
+                        result.Status = 3;
+                        result.MessageEnglish = CommonRepositoryMessages.CannotFindAllMessageEN;
+                        result.MessageArabic = CommonRepositoryMessages.CannotFindAllMessage;
+                    }
                 }
+                   
             }
             catch (Exception ex)
             {
@@ -79,15 +94,20 @@ namespace NetCoreHRProject.DataAccess.Base
 
             try
             {
-                var data = await dbContext.Set<T>().ToListAsync();
-                if (data.Count > 0)
-                    result.List = data;
-                else
+                using (var context = dbContext)
                 {
-                    result.Status = 3;
-                    result.MessageEnglish = CommonRepositoryMessages.CannotFindAllMessageEN;
-                    result.MessageArabic = CommonRepositoryMessages.CannotFindAllMessage;
+                    var data = await context.Set<T>().ToListAsync();
+                    if (data.Count > 0)
+                        result.List = data;
+                    else
+                    {
+                        result.Status = 3;
+                        result.MessageEnglish = CommonRepositoryMessages.CannotFindAllMessageEN;
+                        result.MessageArabic = CommonRepositoryMessages.CannotFindAllMessage;
+                    }
                 }
+
+                  
             }
             catch (Exception ex)
             {
@@ -107,17 +127,23 @@ namespace NetCoreHRProject.DataAccess.Base
             ResultEntity<T> result = new ResultEntity<T>();
             try
             {
-                var data = await dbContext.Set<T>().Where(expression).FirstOrDefaultAsync();
-                if (data != null)
+
+                using (var context = dbContext)
                 {
-                    result.Entity = data;
+                    var data = await context.Set<T>().Where(expression).FirstOrDefaultAsync();
+                    if (data != null)
+                    {
+                        result.Entity = data;
+                    }
+                    else
+                    {
+                        result.Status = 3;
+                        result.MessageArabic = CommonRepositoryMessages.CannotFindByIDMessage;
+                        result.MessageEnglish = CommonRepositoryMessages.CannotFindByIDMessageEN;
+                    }
                 }
-                else
-                {
-                    result.Status = 3;
-                    result.MessageArabic = CommonRepositoryMessages.CannotFindByIDMessage;
-                    result.MessageEnglish = CommonRepositoryMessages.CannotFindByIDMessageEN;
-                }
+
+                  
 
             }
             catch (Exception ex)
@@ -136,17 +162,23 @@ namespace NetCoreHRProject.DataAccess.Base
             ResultList<T> result = new ResultList<T>();
             try
             {
-                var data = await dbContext.Set<T>().Where(expression).ToListAsync();
-                if (data != null)
+
+                using (var context = dbContext)
                 {
-                    result.List = data;
+                    var data = await context.Set<T>().Where(expression).ToListAsync();
+                    if (data != null)
+                    {
+                        result.List = data;
+                    }
+                    else
+                    {
+                        result.Status = 3;
+                        result.MessageArabic = CommonRepositoryMessages.CannotFindByIDMessage;
+                        result.MessageEnglish = CommonRepositoryMessages.CannotFindByIDMessageEN;
+                    }
                 }
-                else
-                {
-                    result.Status = 3;
-                    result.MessageArabic = CommonRepositoryMessages.CannotFindByIDMessage;
-                    result.MessageEnglish = CommonRepositoryMessages.CannotFindByIDMessageEN;
-                }
+
+                   
 
             }
             catch (Exception ex)
@@ -165,11 +197,15 @@ namespace NetCoreHRProject.DataAccess.Base
             ResultEntity<T> result = new ResultEntity<T>();
             try
             {
-                dbContext.Set<T>().Add(entity);
-                await dbContext.SaveChangesAsync();
-                result.MessageArabic = CommonRepositoryMessages.InsertSuccessMessage;
-                result.MessageEnglish = CommonRepositoryMessages.InsertSuccessMessageEn;
-                result.Entity = entity;
+                using (var context = dbContext)
+                {
+                    context.Set<T>().Add(entity);
+                    await context.SaveChangesAsync();
+                    result.MessageArabic = CommonRepositoryMessages.InsertSuccessMessage;
+                    result.MessageEnglish = CommonRepositoryMessages.InsertSuccessMessageEn;
+                    result.Entity = entity;
+                }
+                   
 
             }
             catch (Exception ex)
@@ -188,14 +224,40 @@ namespace NetCoreHRProject.DataAccess.Base
             ResultEntity<T> result = new ResultEntity<T>();
             try
             {
-                dbContext.Set<T>().Update(entity);
-                await dbContext.SaveChangesAsync();
-                result.MessageArabic = CommonRepositoryMessages.UpdateSuccessMessage;
-                result.MessageEnglish = CommonRepositoryMessages.UpdateSuccessMessageEn;
+                using (var context = dbContext)
+                {
+                    context.Set<T>().Update(entity);
+                    await context.SaveChangesAsync();
+                    result.MessageArabic = CommonRepositoryMessages.UpdateSuccessMessage;
+                    result.MessageEnglish = CommonRepositoryMessages.UpdateSuccessMessageEn;
+                }
+                   
 
             }
             catch (Exception ex)
             {
+                result.Status = 1;
+                result.MessageEnglish = CommonRepositoryMessages.ExceptionMessage;
+                result.MessageArabic = CommonRepositoryMessages.ExceptionMessageEn;
+                result.DetailsEnglish = ex.Message + Environment.NewLine + ex.StackTrace;
+                logger.LogError(ex, ex.Message);
+            }
+            return result;
+        }
+
+        public async Task<ResultEntity<int>> GetCount()
+        {
+            ResultEntity<int> result = new ResultEntity<int>();
+            try
+            {
+                using (var context = dbContext)
+                {
+                    result.Entity = await context.Set<T>().CountAsync();
+                }
+            }
+            catch (Exception ex)
+            {
+
                 result.Status = 1;
                 result.MessageEnglish = CommonRepositoryMessages.ExceptionMessage;
                 result.MessageArabic = CommonRepositoryMessages.ExceptionMessageEn;

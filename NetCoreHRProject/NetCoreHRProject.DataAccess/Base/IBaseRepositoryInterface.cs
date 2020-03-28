@@ -17,5 +17,6 @@ namespace NetCoreHRProject.DataAccess.Base
         Task<ResultList<T>> FindByQuery(Expression<Func<T, bool>> expression);
         Task<ResultList<T>> FindAllItems();
         Task<ResultList<T>> FindAll(int pageIndex, int pageSize);
+        Task<ResultEntity<int>> GetCount();
     }
 }

@@ -6,3 +6,10 @@ C:\Users\Hamzah-PC\source\repos\netcorehr\Main\NetCoreHRProject\NetCoreHRProject
 C:\Users\Hamzah-PC\source\repos\netcorehr\Main\NetCoreHRProject\NetCoreHRProject.DI\obj\Debug\netcoreapp3.1\NetCoreHRProject.DI.AssemblyInfo.cs
 C:\Users\Hamzah-PC\source\repos\netcorehr\Main\NetCoreHRProject\NetCoreHRProject.DI\obj\Debug\netcoreapp3.1\NetCoreHRProject.DI.dll
 C:\Users\Hamzah-PC\source\repos\netcorehr\Main\NetCoreHRProject\NetCoreHRProject.DI\obj\Debug\netcoreapp3.1\NetCoreHRProject.DI.pdb
+C:\Users\Hamzah-PC\source\repos\netcorehr\Main\NetCoreHRProject\NetCoreHRProject.DI\bin\Debug\netcoreapp3.1\NetCoreHRProject.DataAccess.dll
+C:\Users\Hamzah-PC\source\repos\netcorehr\Main\NetCoreHRProject\NetCoreHRProject.DI\bin\Debug\netcoreapp3.1\NetCoreHRProject.Entity.dll
+C:\Users\Hamzah-PC\source\repos\netcorehr\Main\NetCoreHRProject\NetCoreHRProject.DI\bin\Debug\netcoreapp3.1\NetCoreHRProject.DataAccess.pdb
+C:\Users\Hamzah-PC\source\repos\netcorehr\Main\NetCoreHRProject\NetCoreHRProject.DI\bin\Debug\netcoreapp3.1\NetCoreHRProject.Entity.pdb
+C:\Users\Hamzah-PC\source\repos\netcorehr\Main\NetCoreHRProject\NetCoreHRProject.DI\obj\Debug\netcoreapp3.1\NetCoreHRProject.DI.csproj.CopyComplete
+C:\Users\Hamzah-PC\source\repos\netcorehr\Main\NetCoreHRProject\NetCoreHRProject.DI\bin\Debug\netcoreapp3.1\NetCoreHRProject.Domain.dll
+C:\Users\Hamzah-PC\source\repos\netcorehr\Main\NetCoreHRProject\NetCoreHRProject.DI\bin\Debug\netcoreapp3.1\NetCoreHRProject.Domain.pdb

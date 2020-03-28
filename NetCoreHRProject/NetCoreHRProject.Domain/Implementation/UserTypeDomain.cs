@@ -1,5 +1,5 @@
 ﻿using Microsoft.Extensions.Logging;
-using NetCoreHRProject.DataAccess.Base;
+using NetCoreHRProject.DataAccess.Interfaces;
 using NetCoreHRProject.Domain.Interfaces;
 using NetCoreHRProject.Entity.Common.Constants;
 using NetCoreHRProject.Entity.Common.Entities;
@@ -9,13 +9,13 @@ using System.Collections.Generic;
 using System.Linq;
 using System.Threading.Tasks;
 
-namespace GIPHRHelperCoreLatest.Domains.Implementation
+namespace NetCoreHRProject.Domain.Implementation
 {
     public class UserTypeDomain : IUserTypeDomain
     {
-        IBaseRepositoryInterface<UserTypeEntity> repository;
+        IUserTypeRepository repository;
         private readonly ILogger<UserTypeEntity> logger;
-        public UserTypeDomain(IBaseRepositoryInterface<UserTypeEntity> _repository, ILogger<UserTypeEntity> _logger)
+        public UserTypeDomain(IUserTypeRepository _repository, ILogger<UserTypeEntity> _logger)
         {
             repository = _repository;
             logger = _logger;
@@ -56,34 +56,14 @@ namespace GIPHRHelperCoreLatest.Domains.Implementation
         public async Task<ResultEntity<UserTypeEntity>> HideShowItem(UserTypeEntity entity)
         {
             ResultEntity<UserTypeEntity> result = new ResultEntity<UserTypeEntity>();
-            var item = await FindByID(entity.ID);
-            if (item.Status == 0)
-            {
-                item.Entity.IsVisable = !item.Entity.IsVisable;
-                result = await Update(item.Entity);
-            }
-            else
-            {
-                result.Status = 2;
-                result.MessageEnglish = CommonDomainMessages.Err_MessageTemplateNotFoundEn;
-            }
+            result = await repository.HideShowItem(entity);
             return result;
         }
 
         public async Task<ResultEntity<UserTypeEntity>> EnableDisableItem(UserTypeEntity entity)
         {
             ResultEntity<UserTypeEntity> result = new ResultEntity<UserTypeEntity>();
-            var item = await FindByID(entity.ID);
-            if (item.Status == 0)
-            {
-                item.Entity.IsEnabled = !item.Entity.IsEnabled;
-                result = await Update(item.Entity);
-            }
-            else
-            {
-                result.Status = 2;
-                result.MessageEnglish = CommonDomainMessages.Err_MessageTemplateNotFoundEn;
-            }
+            result = await repository.EnableDisableItem(entity);
             return result;
         }
 
@@ -94,18 +74,18 @@ namespace GIPHRHelperCoreLatest.Domains.Implementation
 
         public async Task<ResultList<UserTypeEntity>> FindAllActiveAndVisableItems()
         {
-            return await repository.FindByQuery(a => a.IsEnabled == true && a.IsVisable == true);
+            return await repository.FindAllActiveAndVisableItems();
         }
 
 
         public async Task<ResultEntity<UserTypeEntity>> FindByCode(string code)
         {
-            return await repository.FindOneByQuery(a => a.Code == code);
+            return await repository.FindByCode(code);
         }
 
         public async Task<ResultEntity<UserTypeEntity>> FindByID(Guid id)
         {
-            return await repository.FindOneByQuery(a => a.ID == id);
+            return await repository.FindByID(id);
         }
 
 
